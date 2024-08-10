@@ -1,4 +1,4 @@
-class StackCalculator {
+export class StackCalculator {
   constructor() {
     this.stack = [];
   }
@@ -36,9 +36,11 @@ class StackCalculator {
   }
 }
 
-const calculator = new StackCalculator();
-calculator.putValue(3);
-calculator.putValue(2);
-console.log(calculator.multiply());
-calculator.putValue(2);
-console.log(calculator.multiply());
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const calculator = new StackCalculator();
+  calculator.putValue(3);
+  calculator.putValue(2);
+  console.log(calculator.multiply());
+  calculator.putValue(2);
+  console.log(calculator.multiply());
+}
