@@ -19,7 +19,7 @@ const calculator = new StackCalculator();
 const safeCalculator = patchToSafeCalculator(calculator);
 
 calculator.putValue(3);
-calculator.putValue(0);
+calculator.putValue(10);
 
 try {
   console.log(safeCalculator.divide());
