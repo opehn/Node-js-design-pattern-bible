@@ -1,14 +1,14 @@
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
 import { Level } from "level";
-import { levelSubscribe } from "./levelsubscribe.js";
+import { levelSubscribe, levelSubscribeProxy } from "./levelsubscribe.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const dbPath = join(__dirname, "db");
 
-const db = new Level(dbPath, { valueEncoding: "json" });
-levelSubscribe(db);
+//levelSubscribe(db);
+const db = levelSubscribeProxy(new Level(dbPath, { valueEncoding: "json" }));
 
 db.subscribe({ doctype: "tweet", language: "en" }, (k, val) =>
   console.log(val)
